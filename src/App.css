@@ -1,0 +1,9 @@
+@import "./styles/Root.css";
+@import "./styles/Reset.css";
+
+* {
+  margin: 0;
+}
+.App {
+  background-color: var(--bg-color);
+}
