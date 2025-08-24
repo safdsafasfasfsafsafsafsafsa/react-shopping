@@ -11,3 +11,7 @@ const Loading = styled.div`
   align-items: center;
   height: 100vh;
 `;
+
+/*
+setLoading: 데이터 로딩 끝나면 화면 출력되도록
+*/

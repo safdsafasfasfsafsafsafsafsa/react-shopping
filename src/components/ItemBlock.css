@@ -1,11 +1,28 @@
 .item-block {
   display: flex;
   flex-direction: column;
+  align-items: center;
   width: 300px;
   border: 1px solid black;
 }
 
-.item-block__low {
+.item-block__img {
+  padding: 20px 0;
+}
+
+.item-block__title {
+  padding: 10px 0;
+}
+
+.item-block-low {
   display: flex;
   flex-direction: row;
+  align-items: center;
+  gap: 75px;
+  padding: 20px 0;
+}
+
+.item-block__cart-btn {
+  width: 140px;
+  height: 30px;
 }

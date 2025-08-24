@@ -6,9 +6,9 @@
 // import LoadingSpinner from "../../components/LoadingSpinner";
 
 import "../../styles/Reset.css";
-import "../../styles/PageLayout.css";
+// import "../../styles/PageLayout.css";
 
-export default function MainPage() {
+export default function LoginPage() {
   // const navigate = useNavigate();
 
   // const [loading, setLoading] = useState(false);

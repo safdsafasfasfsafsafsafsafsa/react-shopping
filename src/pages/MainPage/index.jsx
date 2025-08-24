@@ -3,8 +3,8 @@
 // import axios from "../../api/axios";
 // import LoadingSpinner from "../../components/LoadingSpinner";
 
-// import "../../styles/Reset.css";
-import "../../styles/PageLayout.css";
+import "../../styles/Reset.css";
+import "../../styles/MainPage.css";
 import ItemBlocks from "../../components/ItemBlocks";
 
 export default function MainPage() {
@@ -61,16 +61,22 @@ export default function MainPage() {
           </section>
         </>
       )} */}
-      <h1>Products</h1>
+      <h1 className="main-h1">Products</h1>
       <div>
-        <button>모두</button>
-        <button>전자기기</button>
-        <button>쥬얼리</button>
-        <button>남성의류</button>
-        <button>여성의류</button>
+        <button className="main__menu-btn">모두</button>
+        <button className="main__menu-btn">전자기기</button>
+        <button className="main__menu-btn">쥬얼리</button>
+        <button className="main__menu-btn">남성의류</button>
+        <button className="main__menu-btn">여성의류</button>
       </div>
-      <p>Showing: 0 items</p>
-      <ItemBlocks />
+      <div>
+        <p className="main__showing-text">Showing: 0 items</p>
+        <ItemBlocks />
+      </div>
     </section>
   );
 }
+
+/*
+버튼 누르면 set 변경 이벤트로 카테고리 분기: setCategory
+*/

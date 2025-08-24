@@ -6,9 +6,9 @@
 // import LoadingSpinner from "../../components/LoadingSpinner";
 
 import "../../styles/Reset.css";
-import "../../styles/PageLayout.css";
+import "../../styles/DetailPage.css";
 
-export default function MainPage() {
+export default function DetailPage() {
   // const navigate = useNavigate();
 
   // const [loading, setLoading] = useState(false);
@@ -52,7 +52,7 @@ export default function MainPage() {
   // };
 
   return (
-    <div>
+    <section className="detail-page centered">
       {/* {loading && <LoadingSpinner />}
       {!loading && (
         <>
@@ -63,7 +63,32 @@ export default function MainPage() {
           </section>
         </>
       )} */}
-      det
-    </div>
+      <img className="detail__img" src="" alt="detail img" />
+      <div className="detail-right">
+        <p className="detail__category">category</p>
+        <h2 className="detail__title">AAAAAAAAAAAAAAAAAAAAAA</h2>
+        <h2 className="detail__price">$ 100.00</h2>
+        <p className="detail__description">
+          aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasssssssssssssssssssssssss
+        </p>
+        <div className="detail-button">
+          <button className="detail__btn insert">장바구니에 담기</button>
+          <button className="detail__btn redirect">장바구니로 이동</button>
+        </div>
+      </div>
+    </section>
   );
 }
+
+/*
+'https://fakestoreapi.com/products/{id}'
+
+/image
+/category
+/title
+/price
+/description
+
+장바구니 담기: set으로 한 번만, 이미 장바구니에 있으면 모달 띄우기
+장바구니 이동: cart로 이동
+*/
