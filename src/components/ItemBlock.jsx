@@ -3,16 +3,14 @@ import "./ItemBlock.css";
 
 export default function ItemBlock() {
   return (
-    <>
-      <div id="" className="item-block">
-        <img className="item-block__img" src="" alt="img" />
-        <p className="item-block__title">title</p>
-        <div className="item-block-low">
-          <button className="item-block__cart-btn">장바구니에 담기</button>
-          <p className="item-block__price">$10</p>
-        </div>
+    <div key="" className="item-block">
+      <img className="item-block__img" src="" alt="img" />
+      <p className="item-block__title">title</p>
+      <div className="item-block-low">
+        <button className="item-block__cart-btn">장바구니에 담기</button>
+        <p className="item-block__price">$10</p>
       </div>
-    </>
+    </div>
   );
 }
 

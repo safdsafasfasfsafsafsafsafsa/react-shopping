@@ -42,4 +42,6 @@ export default function Nav() {
 /*
 외부에서 장바구니 추가 버튼 누르면 숫자 표시
 카트 버튼을 누르면 isModal으로 장바구니 띄우기
+
+로그인 상태에 따라 login 로고 분기
 */

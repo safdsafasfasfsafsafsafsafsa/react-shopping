@@ -6,9 +6,9 @@
 // import LoadingSpinner from "../../components/LoadingSpinner";
 
 import "../../styles/Reset.css";
-// import "../../styles/PageLayout.css";
+import "../../styles/RegisterPage.css";
 
-export default function RegisterPage() {
+export default function LoginPage() {
   // const navigate = useNavigate();
 
   // const [loading, setLoading] = useState(false);
@@ -52,7 +52,7 @@ export default function RegisterPage() {
   // };
 
   return (
-    <div>
+    <section className="login-page centered">
       {/* {loading && <LoadingSpinner />}
       {!loading && (
         <>
@@ -63,7 +63,25 @@ export default function RegisterPage() {
           </section>
         </>
       )} */}
-      reg
-    </div>
+      <div className="login-box">
+        <h2>가입하기</h2>
+        <input
+          class="login__email login-form"
+          type="email"
+          placeholder="Email"
+        />
+        <input
+          class="login__pw login-form"
+          type="password"
+          placeholder="Password"
+        />
+        <div class="login__submit">
+          <input type="submit" value="가입하기" />
+        </div>
+        <div class="login__register">
+          <a href="">로그인</a>
+        </div>
+      </div>
+    </section>
   );
 }
