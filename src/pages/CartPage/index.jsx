@@ -52,36 +52,38 @@ export default function CartPage() {
   // };
 
   return (
-    // <section className="cart-page-empty">
-    //   empty
-    // </section>
     <section className="cart-page centered">
-      <h1 className="cart-h1">장바구니</h1>
-      <div className="cart__items">
-        <div className="cart__item">
-          <img className="cart__img" src="" alt="cart img" />
-          <div className="cart-info">
-            <p className="cart__category">category</p>
-            <h2 className="cart__title">AAAAAAAAAAAAAAAAAAAAAA</h2>
-            <h2 className="cart__price">$ 100.00 x 1 = $ 100.00</h2>
-          </div>
-          <div className="cart-count">
-            <button className="cart-count__minus-btn block">-</button>
-            <p className="cart-count__item block">1</p>
-            <button className="cart-count__plus-btn block">+</button>
-          </div>
-          <img
-            className="cart__icon-delete"
-            src="/img/trash-can.svg"
-            alt="delete"
-          />
-        </div>
-      </div>
-      <div className="cart-result">
-        <p className="cart-result__sum">합계: $ 100.00</p>
-        <button className="cart-result__btn">계산하기</button>
-      </div>
+      <img src="/img/cart.png" alt="empty cart" />
+      <h2>장바구니가 비어있습니다.</h2>
+      <a href="/">계속 쇼핑하기</a>
     </section>
+    // <section className="cart-page centered">
+    //   <h1 className="cart-h1">장바구니</h1>
+    //   <div className="cart__items">
+    //     <div className="cart__item">
+    //       <img className="cart__img" src="" alt="cart img" />
+    //       <div className="cart-info">
+    //         <p className="cart__category">category</p>
+    //         <h2 className="cart__title">AAAAAAAAAAAAAAAAAAAAAA</h2>
+    //         <h2 className="cart__price">$ 100.00 x 1 = $ 100.00</h2>
+    //       </div>
+    //       <div className="cart-count">
+    //         <button className="cart-count__minus-btn block">-</button>
+    //         <p className="cart-count__item block">1</p>
+    //         <button className="cart-count__plus-btn block">+</button>
+    //       </div>
+    //       <img
+    //         className="cart__icon-delete"
+    //         src="/img/trash-can.svg"
+    //         alt="delete"
+    //       />
+    //     </div>
+    //   </div>
+    //   <div className="cart-result">
+    //     <p className="cart-result__sum">합계: $ 100.00</p>
+    //     <button className="cart-result__btn">계산하기</button>
+    //   </div>
+    // </section>
   );
 }
 
