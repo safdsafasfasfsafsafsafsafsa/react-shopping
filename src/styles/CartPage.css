@@ -1,6 +1,5 @@
 @import "./Root.css";
 
-/* Cart */
 .cart-page {
   background-image: var(--main-color);
   display: flex;
@@ -8,6 +7,9 @@
   margin: 0 15%;
 }
 
+/* cart-empty */
+
+/* Cart */
 .cart-h1 {
   color: var(--text-color);
   display: inline-block;
