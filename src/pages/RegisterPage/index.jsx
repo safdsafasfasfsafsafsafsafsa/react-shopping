@@ -52,7 +52,7 @@ export default function LoginPage() {
   // };
 
   return (
-    <section className="login-page centered">
+    <section className="reg-page centered">
       {/* {loading && <LoadingSpinner />}
       {!loading && (
         <>
