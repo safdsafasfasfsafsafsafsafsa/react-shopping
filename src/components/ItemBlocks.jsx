@@ -17,6 +17,7 @@ export default function ItemBlocks() {
           price={item.price}
         />
       ))}
+      {/* <div className="spacer"></div> */}
     </section>
   );
 }

@@ -6,6 +6,7 @@ const mainSlice = createSlice({
   initialState: {
     items: [],
     filteredItems: [],
+    filteredLength: 0,
     status: "idle",
     error: null,
   },
@@ -15,10 +16,12 @@ const mainSlice = createSlice({
 
       if (category === "all") {
         state.filteredItems = state.items;
+        state.filteredLength = state.items.length;
       } else {
         state.filteredItems = state.items.filter(
           (product) => product.category === category
         );
+        state.filteredLength = state.filteredItems.length;
       }
     },
 

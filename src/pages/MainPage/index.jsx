@@ -1,16 +1,19 @@
 import React, { useEffect } from "react";
 // import { useNavigate } from "react-router-dom";
-// import LoadingSpinner from "../../components/LoadingSpinner";
+import LoadingSpinner from "../../components/LoadingSpinner";
 
 import "../../styles/Reset.css";
 import "../../styles/MainPage.css";
 import ItemBlocks from "../../components/ItemBlocks";
 import { setFilteredProducts } from "../../store/slices/mainSilce";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { fetchAllProducts } from "../../store/asyncTrunks/productsTrunks";
 
 export default function MainPage() {
   const dispatch = useDispatch();
+
+  const filteredLength = useSelector((state) => state.main.filteredLength);
+  const status = useSelector((state) => state.main.status);
 
   // ❤ 리덕스 연결 필수 요소
   useEffect(() => {
@@ -22,18 +25,16 @@ export default function MainPage() {
     dispatch(setFilteredProducts(category));
   };
 
+  if (status === "loading") {
+    return (
+      <section className="main-page centered">
+        <LoadingSpinner />
+      </section>
+    );
+  }
+
   return (
     <section className="main-page centered">
-      {/* {loading && <LoadingSpinner />}
-      {!loading && (
-        <>
-          <section className="main-page centered">
-            <h1 className="title-h1">Insert music file</h1>
-            <h2 className="title-h2">mp3, wav etc</h2>
-            <Submit nav="analyze" />
-          </section>
-        </>
-      )} */}
       <h1 className="main-h1">Products</h1>
       <div>
         <button
@@ -67,10 +68,11 @@ export default function MainPage() {
           여성의류
         </button>
       </div>
-      <div>
-        <p className="main__showing-text">Showing: 0 items</p>
+      <div className="main-products">
+        <p className="main__showing-text">Showing: {filteredLength} items</p>
         <ItemBlocks />
       </div>
+      <div className="padding"></div>
     </section>
   );
 }

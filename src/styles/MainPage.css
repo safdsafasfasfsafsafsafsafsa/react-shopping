@@ -34,3 +34,11 @@
   margin-bottom: 20px;
   font-size: 14pt;
 }
+
+.main-products {
+  width: 1236px; /* flex-start 억제, 자동 조절 방법이 있나? */
+}
+
+.padding {
+  padding-bottom: 100px;
+}
