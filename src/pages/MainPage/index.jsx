@@ -16,7 +16,7 @@ export default function MainPage() {
   // ❤ 리덕스 연결 필수 요소
   useEffect(() => {
     dispatch(fetchAllProducts());
-    console.log("ok");
+    console.log("main");
   }, [dispatch]);
 
   const handleFilterClick = (category) => {

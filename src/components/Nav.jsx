@@ -1,8 +1,15 @@
 import React from "react";
 import "../styles/Reset.css";
 import "./Nav.css";
+import { useNavigate } from "react-router-dom";
 
 export default function Nav() {
+  const navigate = useNavigate();
+
+  const handleClickLogin = () => {
+    navigate(`/login`);
+  };
+
   const handlePageReload = () => {
     window.location.href = "/";
   };
@@ -32,7 +39,7 @@ export default function Nav() {
           src="/img/login.svg"
           alt="login"
           className="nav__log-in-out"
-          onClick={handlePageReload}
+          onClick={handleClickLogin}
         />
       </div>
     </nav>

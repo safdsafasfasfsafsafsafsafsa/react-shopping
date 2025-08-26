@@ -5,11 +5,13 @@ https://dev-astra.tistory.com/550
 
 import { configureStore } from "@reduxjs/toolkit";
 import mainReducer from "./slices/mainSilce";
+import idReducer from "./slices/idSilce";
 import cartReducer from "./slices/cartSlice";
 
 export const store = configureStore({
   reducer: {
     main: mainReducer,
+    id: idReducer,
     cart: cartReducer,
   },
 });

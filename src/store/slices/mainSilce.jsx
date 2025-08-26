@@ -24,10 +24,6 @@ const mainSlice = createSlice({
         state.filteredLength = state.filteredItems.length;
       }
     },
-
-    getProductById: (state, action) => {
-      state.items = action.payload;
-    },
   },
   extraReducers: (builder) => {
     builder
