@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-// import { useNavigate } from "react-router-dom";
 import LoadingSpinner from "../../components/LoadingSpinner";
 
 import "../../styles/Reset.css";
@@ -12,12 +11,12 @@ import { fetchAllProducts } from "../../store/asyncTrunks/productsTrunks";
 export default function MainPage() {
   const dispatch = useDispatch();
 
-  const filteredLength = useSelector((state) => state.main.filteredLength);
-  const status = useSelector((state) => state.main.status);
+  const { filteredLength, status } = useSelector((state) => state.main);
 
   // ❤ 리덕스 연결 필수 요소
   useEffect(() => {
     dispatch(fetchAllProducts());
+    console.log("ok");
   }, [dispatch]);
 
   const handleFilterClick = (category) => {

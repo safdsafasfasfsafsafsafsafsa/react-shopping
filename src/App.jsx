@@ -4,7 +4,7 @@ import DetailPage from "./pages/DetailPage/index";
 import CartPage from "./pages/CartPage/index";
 import LoginPage from "./pages/LoginPage/index";
 import RegisterPage from "./pages/RegisterPage/index";
-import { Outlet, Routes, Route } from "react-router-dom";
+import { Outlet, Routes, Route, Navigate } from "react-router-dom";
 import "./App.css";
 
 const Layout = () => {
@@ -22,7 +22,8 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<MainPage />}></Route>
-          <Route path="detail" element={<DetailPage />}></Route>
+          <Route path="detail" element={<Navigate to="/" replace />}></Route>
+          <Route path="detail/:id" element={<DetailPage />}></Route>
           <Route path="cart" element={<CartPage />}></Route>
           <Route path="login" element={<LoginPage />}></Route>
           <Route path="register" element={<RegisterPage />}></Route>

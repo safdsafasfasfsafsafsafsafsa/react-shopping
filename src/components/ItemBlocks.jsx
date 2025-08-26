@@ -5,13 +5,13 @@ import { useSelector } from "react-redux";
 
 export default function ItemBlocks() {
   const filteredItems = useSelector((state) => state.main.filteredItems);
-  console.log("filter", filteredItems);
 
   return (
     <section className="item-blocks">
       {filteredItems.map((item) => (
         <ItemBlock
           key={item.id}
+          id={item.id}
           src={item.image}
           title={item.title}
           price={item.price}

@@ -1,11 +1,25 @@
 import React from "react";
 import "./ItemBlock.css";
+import { useNavigate } from "react-router-dom";
 
-export default function ItemBlock({ key, src, title, price }) {
+export default function ItemBlock({ key, id, src, title, price }) {
+  const navigate = useNavigate();
+
+  const handleClick = (productId) => {
+    navigate(`/detail/${productId}`);
+  };
+
   return (
-    <div key={key} id={key} className="item-block">
-      <img className="item-block__img" src={src} alt="img" />
-      <p className="item-block__title">{title}</p>
+    <div key={key} id={id} className="item-block">
+      <img
+        className="item-block__img"
+        src={src}
+        alt="img"
+        onClick={() => handleClick(id)}
+      />
+      <p className="item-block__title" onClick={() => handleClick(id)}>
+        {title}
+      </p>
       <div className="item-block-low">
         <button className="item-block__cart-btn">장바구니에 담기</button>
         <p className="item-block__price">${price}</p>

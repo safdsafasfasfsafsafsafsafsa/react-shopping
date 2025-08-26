@@ -51,6 +51,14 @@ export default function DetailPage() {
   //   }
   // };
 
+  if (status === "loading") {
+    return (
+      <section className="detail-page centered">
+        <LoadingSpinner />
+      </section>
+    );
+  }
+
   return (
     <section className="detail-page centered">
       {/* {loading && <LoadingSpinner />}

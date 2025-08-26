@@ -3,6 +3,7 @@
   flex-direction: column;
   align-items: center;
   width: 300px;
+  height: 430px;
   border: 1px solid black;
   flex-shrink: 0;
   margin-bottom: 20px;
@@ -12,10 +13,12 @@
   margin: 40px 0;
   height: 150px;
   width: auto;
+  cursor: pointer;
 }
 
 .item-block__title {
   padding: 10px 15px;
+  cursor: pointer;
 }
 
 .item-block-low {
@@ -28,8 +31,12 @@
 }
 
 .item-block__cart-btn {
-  width: 140px;
-  height: 30px;
+  width: 150px;
+  height: 35px;
+}
+
+.item-block__price {
+  width: 60px;
 }
 
 /* .spacer {

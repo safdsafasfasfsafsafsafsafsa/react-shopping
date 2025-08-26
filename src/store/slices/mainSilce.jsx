@@ -25,7 +25,7 @@ const mainSlice = createSlice({
       }
     },
 
-    getProduct: (state, action) => {
+    getProductById: (state, action) => {
       state.items = action.payload;
     },
   },
