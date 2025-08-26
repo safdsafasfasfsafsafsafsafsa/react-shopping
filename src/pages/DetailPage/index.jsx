@@ -24,21 +24,24 @@ export default function DetailPage() {
   }, [dispatch]);
 
   return (
-    <section className="detail-page centered">
-      <img className="detail__img" src={itemById.image} alt="detail img" />
-      <div className="detail-right">
-        <p className="detail__category">{itemById.category}</p>
-        <h2 className="detail__title">{itemById.title}</h2>
-        <h2 className="detail__price">$ {itemById.price}</h2>
-        <p className="detail__description">{itemById.description}</p>
-        <div className="detail-button">
-          <button className="detail__btn insert">장바구니에 담기</button>
-          <button className="detail__btn redirect" onClick={handleClick}>
-            장바구니로 이동
-          </button>
+    <>
+      <section className="detail-page centered">
+        <img className="detail__img" src={itemById.image} alt="detail img" />
+        <div className="detail-right">
+          <p className="detail__category">{itemById.category}</p>
+          <h2 className="detail__title">{itemById.title}</h2>
+          <h2 className="detail__price">$ {itemById.price}</h2>
+          <p className="detail__description">{itemById.description}</p>
+          <div className="detail-button">
+            <button className="detail__btn insert">장바구니에 담기</button>
+            <button className="detail__btn redirect" onClick={handleClick}>
+              장바구니로 이동
+            </button>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+      <div className="padding"></div>
+    </>
   );
 }
 

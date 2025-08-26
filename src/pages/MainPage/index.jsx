@@ -33,46 +33,48 @@ export default function MainPage() {
   }
 
   return (
-    <section className="main-page centered">
-      <h1 className="main-h1">Products</h1>
-      <div>
-        <button
-          className="main__menu-btn"
-          onClick={() => handleFilterClick("all")}
-        >
-          모두
-        </button>
-        <button
-          className="main__menu-btn"
-          onClick={() => handleFilterClick("electronics")}
-        >
-          전자기기
-        </button>
-        <button
-          className="main__menu-btn"
-          onClick={() => handleFilterClick("jewelery")}
-        >
-          쥬얼리
-        </button>
-        <button
-          className="main__menu-btn"
-          onClick={() => handleFilterClick("men's clothing")}
-        >
-          남성의류
-        </button>
-        <button
-          className="main__menu-btn"
-          onClick={() => handleFilterClick("women's clothing")}
-        >
-          여성의류
-        </button>
-      </div>
-      <div className="main-products">
-        <p className="main__showing-text">Showing: {filteredLength} items</p>
-        <ItemBlocks />
-      </div>
+    <>
+      <section className="main-page centered">
+        <h1 className="main-h1">Products</h1>
+        <div>
+          <button
+            className="main__menu-btn"
+            onClick={() => handleFilterClick("all")}
+          >
+            모두
+          </button>
+          <button
+            className="main__menu-btn"
+            onClick={() => handleFilterClick("electronics")}
+          >
+            전자기기
+          </button>
+          <button
+            className="main__menu-btn"
+            onClick={() => handleFilterClick("jewelery")}
+          >
+            쥬얼리
+          </button>
+          <button
+            className="main__menu-btn"
+            onClick={() => handleFilterClick("men's clothing")}
+          >
+            남성의류
+          </button>
+          <button
+            className="main__menu-btn"
+            onClick={() => handleFilterClick("women's clothing")}
+          >
+            여성의류
+          </button>
+        </div>
+        <div className="main-products">
+          <p className="main__showing-text">Showing: {filteredLength} items</p>
+          <ItemBlocks />
+        </div>
+      </section>
       <div className="padding"></div>
-    </section>
+    </>
   );
 }
 
