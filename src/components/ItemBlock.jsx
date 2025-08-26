@@ -1,14 +1,14 @@
 import React from "react";
 import "./ItemBlock.css";
 
-export default function ItemBlock() {
+export default function ItemBlock({ key, src, title, price }) {
   return (
-    <div key="" className="item-block">
-      <img className="item-block__img" src="" alt="img" />
-      <p className="item-block__title">title</p>
+    <div key={key} id={key} className="item-block">
+      <img className="item-block__img" src={src} alt="img" />
+      <p className="item-block__title">{title}</p>
       <div className="item-block-low">
         <button className="item-block__cart-btn">장바구니에 담기</button>
-        <p className="item-block__price">$10</p>
+        <p className="item-block__price">${price}</p>
       </div>
     </div>
   );

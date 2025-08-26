@@ -1,5 +1,3 @@
-// https://velog.io/@sweet_pumpkin/%EB%AC%B4%EC%9E%91%EC%A0%95%EB%94%B0%EB%9D%BC%ED%95%98%EA%B8%B0-%EC%B5%9C%EA%B3%A0-%EB%A6%AC%EB%8D%95%EC%8A%A4%EC%95%BC-%EA%B3%A0%EB%A7%99%EB%8B%A4-Redux-Redux-Toolkit-%EC%95%8C%EC%95%84%EB%B3%B4%EA%B8%B0
-
 import { createSlice } from "@reduxjs/toolkit";
 
 const cartSlice = createSlice({
@@ -8,7 +6,7 @@ const cartSlice = createSlice({
     items: [],
   },
   reducers: {
-    // 1. 새 상품을 장바구니에 '추가'하는 Reducer 정의
+    // 새 상품을 장바구니에 '추가'
     addItem: (state, action) => {
       const newItem = action.payload; // payload에는 추가할 상품 정보가 들어옵니다.
 
@@ -27,17 +25,19 @@ const cartSlice = createSlice({
       }
     },
 
-    // 2. 기존의 'updateQuantity' Reducer는 그대로 유지
-    updateQuantity: (state, action) => {
+    // removeItem: (state, action) => {},
+
+    countQuantity: (state, action) => {
       const { id, change } = action.payload;
       const itemToUpdate = state.items.find((item) => item.id === id);
       if (itemToUpdate) {
         itemToUpdate.quantity += change;
       }
     },
-    // ... 기타 리듀서 (예: removeItem)
+
+    // sumPrice: (state, action) => {},
   },
 });
 
-export const { addItem, updateQuantity } = cartSlice.actions;
+export const { addItem, countQuantity } = cartSlice.actions;
 export default cartSlice.reducer;

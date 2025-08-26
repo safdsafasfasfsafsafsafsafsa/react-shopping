@@ -1,15 +1,14 @@
-// import React, { useState, useContext, useEffect } from "react";
-// import { useNavigate } from "react-router-dom";
-
+import React from "react";
 // import axios from "../../api/axios";
-// import Submit from "../../components/Submit";
-// import LoadingSpinner from "../../components/LoadingSpinner";
-import CartItems from "../../components/CartItems";
+// import { useDispatch } from "react-redux";
 
+import CartItems from "../../components/CartItems";
+// import { addItem } from "./cartSlice";
 import "../../styles/Reset.css";
 import "../../styles/CartPage.css";
 
 export default function CartPage() {
+  // const dispatch = useDispatch();
   // const navigate = useNavigate();
 
   // const [loading, setLoading] = useState(false);

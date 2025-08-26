@@ -1,53 +1,26 @@
-// import React, { useState, useContext, useEffect } from "react";
+import React, { useEffect } from "react";
 // import { useNavigate } from "react-router-dom";
-// import axios from "../../api/axios";
 // import LoadingSpinner from "../../components/LoadingSpinner";
 
 import "../../styles/Reset.css";
 import "../../styles/MainPage.css";
 import ItemBlocks from "../../components/ItemBlocks";
+import { setFilteredProducts } from "../../store/slices/mainSilce";
+import { useDispatch } from "react-redux";
+import { fetchAllProducts } from "../../store/asyncTrunks/productsTrunks";
 
 export default function MainPage() {
-  // const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  // const [loading, setLoading] = useState(false);
+  // ❤ 리덕스 연결 필수 요소
+  useEffect(() => {
+    dispatch(fetchAllProducts());
+  }, [dispatch]);
 
-  // useEffect(() => {
-  //   if (file) {
-  //     console.log("file:", file);
-  //     console.log("typeof file:", typeof file);
-  //     console.log("file instanceof File:", file instanceof File); // true 여야 제대로 작동
-  //     fetchData(file);
-  //   }
-  // }, [file]);
-
-  // const fetchData = async (newFile) => {
-  //   const formData = new FormData();
-  //   formData.append("file", newFile);
-
-  //   try {
-  //     setLoading(true);
-  //     console.log("loading...1");
-
-  //     const response = await axios.post("/analyze", formData, {
-  //       headers: {
-  //         "Content-Type": "multipart/form-data",
-  //       },
-  //     });
-
-  //     console.log(response.data);
-  //     console.log("loading...2");
-
-  //     const resultData = response.data;
-
-  //     navigate(`/analyze`, { state: { result: resultData } });
-  //   } catch (error) {
-  //     console.error("Error:", error);
-  //     console.error("upload error:", error.response?.data || error.message);
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // };
+  const handleFilterClick = (category) => {
+    // ⭐️ 버튼 클릭 시 해당 카테고리명을 payload로 전달
+    dispatch(setFilteredProducts(category));
+  };
 
   return (
     <section className="main-page centered">
@@ -63,11 +36,36 @@ export default function MainPage() {
       )} */}
       <h1 className="main-h1">Products</h1>
       <div>
-        <button className="main__menu-btn">모두</button>
-        <button className="main__menu-btn">전자기기</button>
-        <button className="main__menu-btn">쥬얼리</button>
-        <button className="main__menu-btn">남성의류</button>
-        <button className="main__menu-btn">여성의류</button>
+        <button
+          className="main__menu-btn"
+          onClick={() => handleFilterClick("all")}
+        >
+          모두
+        </button>
+        <button
+          className="main__menu-btn"
+          onClick={() => handleFilterClick("electronics")}
+        >
+          전자기기
+        </button>
+        <button
+          className="main__menu-btn"
+          onClick={() => handleFilterClick("jewelery")}
+        >
+          쥬얼리
+        </button>
+        <button
+          className="main__menu-btn"
+          onClick={() => handleFilterClick("men's clothing")}
+        >
+          남성의류
+        </button>
+        <button
+          className="main__menu-btn"
+          onClick={() => handleFilterClick("women's clothing")}
+        >
+          여성의류
+        </button>
       </div>
       <div>
         <p className="main__showing-text">Showing: 0 items</p>

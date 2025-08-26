@@ -1,18 +1,22 @@
 import React from "react";
 import ItemBlock from "./itemBlock";
 import "./ItemBlocks.css";
+import { useSelector } from "react-redux";
 
 export default function ItemBlocks() {
+  const filteredItems = useSelector((state) => state.main.filteredItems);
+  console.log("filter", filteredItems);
+
   return (
     <section className="item-blocks">
-      <ItemBlock />
-      <ItemBlock />
-      <ItemBlock />
-      <ItemBlock />
-      <ItemBlock />
-      <ItemBlock />
-      <ItemBlock />
-      <ItemBlock />
+      {filteredItems.map((item) => (
+        <ItemBlock
+          key={item.id}
+          src={item.image}
+          title={item.title}
+          price={item.price}
+        />
+      ))}
     </section>
   );
 }

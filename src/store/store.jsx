@@ -3,9 +3,13 @@ https://velog.io/@sweet_pumpkin/%EB%AC%B4%EC%9E%91%EC%A0%95%EB%94%B0%EB%9D%BC%ED
 https://dev-astra.tistory.com/550
 */
 
-// import { configureStore } from '@reduxjs/toolkit';
+import { configureStore } from "@reduxjs/toolkit";
+import mainReducer from "./slices/mainSilce";
+import cartReducer from "./slices/cartSlice";
 
-// export const store = configureStore({
-// 	reducer: counterSlice,
-//     middleware: [...middlewares]
-// })
+export const store = configureStore({
+  reducer: {
+    main: mainReducer,
+    cart: cartReducer,
+  },
+});
