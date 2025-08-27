@@ -4,7 +4,7 @@ import "./ItemBlocks.css";
 import { useSelector } from "react-redux";
 
 export default function ItemBlocks() {
-  const filteredItems = useSelector((state) => state.main.filteredItems);
+  const { filteredItems } = useSelector((state) => state.main);
 
   return (
     <section className="item-blocks">

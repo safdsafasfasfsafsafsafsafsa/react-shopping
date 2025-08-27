@@ -1,21 +1,39 @@
-// https://velog.io/@donggoo/Redux-Toolkit-%EB%A6%AC%EB%8D%95%EC%8A%A4-%ED%88%B4%ED%82%B7-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0
-
 import { createSlice } from "@reduxjs/toolkit";
+import { loginUser } from "../asyncTrunks/loginTrunks";
 
-const initialAuthState = { isAuth: false };
+const initialState = {
+  user: null,
+  status: "idle",
+  error: null,
+};
 
 const authSlice = createSlice({
   name: "auth",
-  initialState: initialAuthState,
+  initialState,
   reducers: {
-    login(state) {
-      state.isAuth = true;
+    // 동기적인 로그아웃 액션
+    logoutUser: (state) => {
+      state.user = null;
+      state.status = "idle";
+      state.error = null;
     },
-    logout(state) {
-      state.isAuth = false;
-    },
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(loginUser.pending, (state) => {
+        state.status = "loading";
+        state.error = null;
+      })
+      .addCase(loginUser.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        state.user = action.payload; // 로그인 성공 시 유저 정보 저장
+      })
+      .addCase(loginUser.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.payload; // rejectWithValue로 받은 에러 메시지
+      });
   },
 });
 
-export const { login, logout } = authSlice.actions;
-export default authSlice;
+export const { logoutUser } = authSlice.actions;
+export default authSlice.reducer;
