@@ -33,6 +33,9 @@
   object-fit: contain;
 }
 
+.nav__login-email {
+}
+
 .nav__cart {
   display: inline-block;
   left: 60px;

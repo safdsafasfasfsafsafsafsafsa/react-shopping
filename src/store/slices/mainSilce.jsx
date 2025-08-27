@@ -38,7 +38,7 @@ const mainSlice = createSlice({
         state.status = "loading";
       })
       .addCase(fetchAllProducts.fulfilled, (state, action) => {
-        console.log("action.payload", action.payload);
+        // console.log("action.payload", action.payload);
         state.status = "succeeded";
         state.items = action.payload; // 데이터 저장
       })

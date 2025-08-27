@@ -12,12 +12,12 @@ export default function MainPage() {
   const dispatch = useDispatch();
   const { filteredLength, status } = useSelector((state) => state.main);
 
-  console.log("main 1");
+  // console.log("main 1");
 
   // ❤ 리덕스 연결 필수 요소
   useEffect(() => {
     dispatch(fetchAllProducts());
-    console.log("main 2");
+    // console.log("main 2");
   }, [dispatch]);
 
   const handleFilterClick = (category) => {

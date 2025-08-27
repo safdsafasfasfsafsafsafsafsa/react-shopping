@@ -10,14 +10,10 @@ export default function Nav() {
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
-  const { status } = useSelector((state) => state.auth);
+  const { user, status } = useSelector((state) => state.auth);
 
-  const handlePageReload = () => {
-    window.location.href = "/";
-  };
-
-  const handleClickLogin = () => {
-    navigate(`/login`);
+  const handleNav = (nav) => {
+    navigate(`/${nav}`);
   };
 
   const handleClickLogout = () => {
@@ -33,20 +29,25 @@ export default function Nav() {
         src="/img/logo.png"
         alt="shop logo"
         className="nav__logo"
-        onClick={handlePageReload}
+        onClick={() => handleNav("")}
       />
       <div className="img-right">
+        {status === "succeeded" ? (
+          <p className="nav__login-email">{user.email}</p>
+        ) : (
+          <></>
+        )}
         <img
           src="/img/cart.svg"
           alt="cart"
           className="nav__cart"
-          onClick={handlePageReload}
+          onClick={() => handleNav("cart")}
         />
         <img
           src="/img/person.svg"
           alt="person"
           className="nav__person"
-          onClick={handleClickLogin}
+          onClick={() => handleNav("login")}
         />
         <img
           src="/img/login.svg"

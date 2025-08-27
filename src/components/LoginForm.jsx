@@ -49,7 +49,7 @@ export default function LoginForm() {
         >
           {status === "loading" ? "로그인 중..." : "로그인"}
         </button>
-        {status === "succeeded" ? `성공: ${user.email}` : "실패"}
+        {/* {status === "succeeded" ? `성공: ${user.email}` : "실패"} */}
         {error && <p>{error}</p>}
       </form>
       <div className="login__register">

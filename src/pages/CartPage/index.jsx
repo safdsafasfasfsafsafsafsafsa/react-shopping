@@ -1,9 +1,7 @@
 import React from "react";
-// import axios from "../../api/axios";
 // import { useDispatch } from "react-redux";
 
 import CartItems from "../../components/CartItems";
-// import { addItem } from "./cartSlice";
 import "../../styles/Reset.css";
 import "../../styles/CartPage.css";
 

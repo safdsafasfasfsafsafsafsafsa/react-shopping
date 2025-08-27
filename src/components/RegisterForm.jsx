@@ -47,7 +47,7 @@ export default function LoginForm() {
         >
           {status === "loading" ? "진행 중..." : "가입하기"}
         </button>
-        {status === "succeeded" ? "성공" : "실패"}
+        {/* {status === "succeeded" ? "성공" : "실패"} */}
         {error && <p>{error}</p>}
       </form>
       <div className="login__register">
