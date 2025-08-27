@@ -1,31 +1,29 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { loginUser } from "../store/asyncTrunks/loginTrunks";
+import { signupUser } from "../store/asyncTrunks/loginTrunks";
 import { useNavigate } from "react-router-dom";
 
 export default function LoginForm() {
   const navigate = useNavigate();
 
-  // 지역 한정 정보는 setState 사용?
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const dispatch = useDispatch();
-  const { user, status, error } = useSelector((state) => state.auth);
+  const { status, error } = useSelector((state) => state.auth);
 
   const handleClick = () => {
-    navigate(`/register`);
+    navigate(`/login`);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // ⭐️ dispatch를 통해 Thunk를 호출하고 이메일, 비밀번호를 전달합니다.
-    dispatch(loginUser({ email, password }));
+    dispatch(signupUser({ email, password }));
   };
 
   return (
     <div className="login-box">
-      <h2>로그인</h2>
+      <h2>가입하기</h2>
       <form onSubmit={handleSubmit}>
         <input
           className="login__email login-form"
@@ -47,13 +45,13 @@ export default function LoginForm() {
           value="로그인"
           disabled={status === "loading"}
         >
-          {status === "loading" ? "로그인 중..." : "로그인"}
+          {status === "loading" ? "진행 중..." : "가입하기"}
         </button>
-        {status === "succeeded" ? `성공: ${user.email}` : "실패"}
+        {status === "succeeded" ? "성공" : "실패"}
         {error && <p>{error}</p>}
       </form>
       <div className="login__register">
-        <p onClick={handleClick}>가입하기</p>
+        <p onClick={handleClick}>로그인하기</p>
       </div>
     </div>
   );

@@ -8,49 +8,6 @@ import "../../styles/Reset.css";
 import "../../styles/CartPage.css";
 
 export default function CartPage() {
-  // const dispatch = useDispatch();
-  // const navigate = useNavigate();
-
-  // const [loading, setLoading] = useState(false);
-  // const { file } = useContext(FileContext);
-
-  // useEffect(() => {
-  //   if (file) {
-  //     console.log("file:", file);
-  //     console.log("typeof file:", typeof file);
-  //     console.log("file instanceof File:", file instanceof File); // true 여야 제대로 작동
-  //     fetchData(file);
-  //   }
-  // }, [file]);
-
-  // const fetchData = async (newFile) => {
-  //   const formData = new FormData();
-  //   formData.append("file", newFile);
-
-  //   try {
-  //     setLoading(true);
-  //     console.log("loading...1");
-
-  //     const response = await axios.post("/analyze", formData, {
-  //       headers: {
-  //         "Content-Type": "multipart/form-data",
-  //       },
-  //     });
-
-  //     console.log(response.data);
-  //     console.log("loading...2");
-
-  //     const resultData = response.data;
-
-  //     navigate(`/analyze`, { state: { result: resultData } });
-  //   } catch (error) {
-  //     console.error("Error:", error);
-  //     console.error("upload error:", error.response?.data || error.message);
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // };
-
   return (
     // <section className="cart-page centered">
     //   <img src="/img/cart.png" alt="empty cart" />

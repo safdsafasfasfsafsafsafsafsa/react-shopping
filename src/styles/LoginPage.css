@@ -1,6 +1,6 @@
 @import "./Root.css";
 
-/* login */
+/* login, register 통합 */
 .login-page {
   background-image: var(--main-color);
   display: flex;
@@ -25,6 +25,12 @@
   font-size: 28px;
 }
 
+.login-box form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .login-form {
   margin-top: 40px;
   box-shadow: 0 0 30px rgba(black, 0.1);
@@ -37,6 +43,10 @@
 
 .login__submit {
   margin-top: 40px;
+  box-shadow: 0 0 30px rgba(black, 0.1);
+  box-sizing: border-box;
+  width: 280px;
+  height: 40px;
 }
 
 .login__submit input {
@@ -49,5 +59,6 @@
   margin-top: 40px;
 }
 
-.login__register a {
+.login__register p {
+  cursor: pointer;
 }

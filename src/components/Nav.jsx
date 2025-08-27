@@ -1,17 +1,30 @@
 import React from "react";
 import "../styles/Reset.css";
 import "./Nav.css";
+import { useDispatch, useSelector } from "react-redux";
+import { clearUser } from "../store/slices/authSlice";
+import { logoutUser } from "../store/asyncTrunks/loginTrunks";
 import { useNavigate } from "react-router-dom";
 
 export default function Nav() {
   const navigate = useNavigate();
 
+  const dispatch = useDispatch();
+  const { status } = useSelector((state) => state.auth);
+
+  const handlePageReload = () => {
+    window.location.href = "/";
+  };
+
   const handleClickLogin = () => {
     navigate(`/login`);
   };
 
-  const handlePageReload = () => {
-    window.location.href = "/";
+  const handleClickLogout = () => {
+    if (status === "succeeded") {
+      dispatch(logoutUser());
+      dispatch(clearUser());
+    }
   };
 
   return (
@@ -33,13 +46,13 @@ export default function Nav() {
           src="/img/person.svg"
           alt="person"
           className="nav__person"
-          onClick={handlePageReload}
+          onClick={handleClickLogin}
         />
         <img
           src="/img/login.svg"
           alt="login"
           className="nav__log-in-out"
-          onClick={handleClickLogin}
+          onClick={handleClickLogout}
         />
       </div>
     </nav>
