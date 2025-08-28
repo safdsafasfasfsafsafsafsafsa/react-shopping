@@ -6,7 +6,7 @@ import LoginPage from "./pages/LoginPage/index";
 import RegisterPage from "./pages/RegisterPage/index";
 
 import React, { useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { onAuthStateChanged } from "firebase/auth"; // 옵저버: 로그인 유지
 import { auth } from "./firebase-config";
 import { setUser, clearUser } from "./store/slices/authSlice";
@@ -25,6 +25,7 @@ const Layout = () => {
 
 export default function App() {
   const dispatch = useDispatch();
+  const { isAuthReady } = useSelector((state) => state.auth);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -42,6 +43,10 @@ export default function App() {
     // 컴포넌트가 언마운트될 때 리스너를 해제합니다.
     return () => unsubscribe();
   }, [dispatch]);
+
+  if (!isAuthReady) {
+    return <div>로딩 중...</div>;
+  }
 
   return (
     <div className="App">

@@ -1,15 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { loginUser, signupUser } from "../asyncTrunks/loginTrunks";
 
-const initialState = {
-  user: null,
-  status: "idle",
-  error: null,
-};
-
 const authSlice = createSlice({
   name: "auth",
-  initialState,
+  initialState: {
+    user: null,
+    status: "idle",
+    error: null,
+    isAuthReady: false,
+  },
   reducers: {
     // 로그인 성공 시 호출: 상태 유지
     setUser: (state, action) => {
@@ -19,12 +18,14 @@ const authSlice = createSlice({
       state.user = authUser.toJSON();
       state.status = "succeeded";
       state.error = null;
+      state.isAuthReady = true;
     },
     // 로그아웃 시 호출
     clearUser: (state) => {
       state.user = null;
       state.status = "idle";
       state.error = null;
+      state.isAuthReady = true;
     },
   },
   extraReducers: (builder) => {

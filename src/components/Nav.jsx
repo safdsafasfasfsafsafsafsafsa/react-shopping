@@ -16,11 +16,15 @@ export default function Nav() {
   const { checkAuthAndRedirect } = useAuthCheck();
 
   const handleNav = (nav) => {
-    if (nav === "cart") {
-      checkAuthAndRedirect();
-      return;
-    }
     navigate(`/${nav}`);
+  };
+
+  // 로그인 체크
+  const handleNavCheck = (nav) => {
+    const check = checkAuthAndRedirect();
+    if (check) {
+      navigate(`/${nav}`);
+    }
   };
 
   const handleClickLogout = () => {
@@ -48,7 +52,7 @@ export default function Nav() {
           src="/img/cart.svg"
           alt="cart"
           className="nav__cart"
-          onClick={() => handleNav("cart")}
+          onClick={() => handleNavCheck("cart")}
         />
         <img
           src="/img/person.svg"

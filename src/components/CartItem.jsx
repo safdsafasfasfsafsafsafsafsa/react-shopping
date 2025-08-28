@@ -1,8 +1,11 @@
 import React from "react";
 import { useDispatch } from "react-redux";
+import { useNavigate, useParams } from "react-router-dom";
 
 export default function CartItem() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const params = useParams();
 
   return (
     <div key="" className="cart__item">

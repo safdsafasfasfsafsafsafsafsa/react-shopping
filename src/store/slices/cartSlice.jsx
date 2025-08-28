@@ -43,7 +43,26 @@ const cartSlice = createSlice({
       })
       .addCase(addToCart.fulfilled, (state, action) => {
         state.status = "succeeded";
-        addItem(action.payload); // 데이터 저장
+
+        /*
+        addItem은 createSlice의 reducers에 정의된 함수로,
+        addCase의 콜백 함수 외부에 있습니다.
+        
+        따라서 addCase 콜백 내에서 addItem을 호출하는 것은 Redux의 불변성 규칙을 위반하고
+        immer의 프록시(Proxy)가 제대로 작동하지 않게 만듭니다.
+        */
+        const newItem = action.payload;
+        const existingItem = state.items.find((item) => item.id === newItem.id);
+
+        if (existingItem) {
+          existingItem.amount += 1;
+        } else {
+          // 없으면 배열에 새 항목 추가 (RTK는 immer를 사용하므로 직접 push 가능)
+          state.items.push({
+            ...newItem,
+          });
+        }
+
         console.log("state.items", state.items);
       })
       .addCase(addToCart.rejected, (state, action) => {
