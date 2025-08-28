@@ -27,9 +27,11 @@ export default function MainPage() {
 
   if (status === "loading") {
     return (
-      <section className="main-page centered">
-        <LoadingSpinner />
-      </section>
+      <>
+        <section className="main-page centered">
+          <LoadingSpinner />
+        </section>
+      </>
     );
   }
 

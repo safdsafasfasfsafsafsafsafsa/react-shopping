@@ -12,6 +12,7 @@ import { auth } from "./firebase-config";
 import { setUser, clearUser } from "./store/slices/authSlice";
 import { Outlet, Routes, Route, Navigate } from "react-router-dom";
 import "./App.css";
+import AuthCheck from "./components/AuthCheck";
 
 const Layout = () => {
   return (
@@ -49,10 +50,13 @@ export default function App() {
           <Route index element={<MainPage />}></Route>
           <Route path="detail" element={<Navigate to="/" replace />}></Route>
           <Route path="detail/:id" element={<DetailPage />}></Route>
-          <Route path="cart" element={<CartPage />}></Route>
           <Route path="login" element={<LoginPage />}></Route>
           <Route path="register" element={<RegisterPage />}></Route>
+          <Route element={<AuthCheck />}>
+            <Route path="cart" element={<CartPage />}></Route>
+          </Route>
         </Route>
+        <Route path="*" element={<div>404 Page Not Found</div>} />
       </Routes>
     </div>
   );

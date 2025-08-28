@@ -1,8 +1,10 @@
 import React, { useEffect } from "react";
+import LoadingSpinner from "../../components/LoadingSpinner";
 import { useNavigate, useParams } from "react-router-dom";
 
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProductById } from "../../store/asyncTrunks/productsTrunks";
+import { useAuthCheck } from "../../hooks/useAuthCheck";
 
 import "../../styles/Reset.css";
 import "../../styles/DetailPage.css";
@@ -11,17 +13,30 @@ export default function DetailPage() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const params = useParams();
+  const { checkAuthAndRedirect } = useAuthCheck();
 
-  const { itemById } = useSelector((state) => state.id);
+  const { itemById, status } = useSelector((state) => state.id);
 
   const handleClick = () => {
-    navigate(`/cart`);
+    if (checkAuthAndRedirect()) {
+      navigate(`/cart`);
+    }
   };
 
   useEffect(() => {
     dispatch(fetchProductById(params.id));
-    console.log("id", params.id);
+    // console.log("id", params.id);
   }, [dispatch]);
+
+  if (status === "loading") {
+    return (
+      <>
+        <section className="detail-page centered">
+          <LoadingSpinner />
+        </section>
+      </>
+    );
+  }
 
   return (
     <>

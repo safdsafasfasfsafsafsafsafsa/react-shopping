@@ -12,7 +12,8 @@ export default function ItemBlocks() {
         <ItemBlock
           key={item.id}
           id={item.id}
-          src={item.image}
+          category={item.category}
+          image={item.image}
           title={item.title}
           price={item.price}
         />

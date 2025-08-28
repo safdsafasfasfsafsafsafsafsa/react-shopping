@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { clearUser } from "../store/slices/authSlice";
 import { logoutUser } from "../store/asyncTrunks/loginTrunks";
 import { useNavigate } from "react-router-dom";
+import { useAuthCheck } from "../hooks/useAuthCheck";
 
 export default function Nav() {
   const navigate = useNavigate();
@@ -12,7 +13,13 @@ export default function Nav() {
   const dispatch = useDispatch();
   const { user, status } = useSelector((state) => state.auth);
 
+  const { checkAuthAndRedirect } = useAuthCheck();
+
   const handleNav = (nav) => {
+    if (nav === "cart") {
+      checkAuthAndRedirect();
+      return;
+    }
     navigate(`/${nav}`);
   };
 

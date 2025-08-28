@@ -1,6 +1,9 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 
 export default function CartItem() {
+  const dispatch = useDispatch();
+
   return (
     <div key="" className="cart__item">
       <img className="cart__img" src="" alt="cart img" />

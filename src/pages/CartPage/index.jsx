@@ -35,4 +35,6 @@ export default function CartPage() {
 구현하면 헤더 모달에도 재사용 가능할 듯, 갯수 조정 빼면 동일
 
 합계: 전역set 만든거 가져오기
+
+image, category, title, price, amount(추가)
 */

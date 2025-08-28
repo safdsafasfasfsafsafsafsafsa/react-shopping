@@ -11,7 +11,7 @@ export default function LoginForm() {
   const [password, setPassword] = useState("");
 
   const dispatch = useDispatch();
-  const { user, status, error } = useSelector((state) => state.auth);
+  const { status, error } = useSelector((state) => state.auth);
 
   const handleClick = () => {
     navigate(`/register`);
