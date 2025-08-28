@@ -11,7 +11,6 @@ export default function ItemBlock({ key, id, category, image, title, price }) {
   const { checkAuthAndRedirect } = useAuthCheck();
 
   const { items } = useSelector((state) => state.cart);
-  const { user } = useSelector((state) => state.auth);
 
   const handleAddToCart = () => {
     if (checkAuthAndRedirect()) {
@@ -21,11 +20,10 @@ export default function ItemBlock({ key, id, category, image, title, price }) {
         image: image,
         title: title,
         price: price,
-        amount: 1, // 초기 수량
+        // 초기 수량은 trunk 계산으로
       };
       dispatch(addToCart(cartItem));
       alert("장바구니에 상품을 추가했습니다");
-      console.log("user:", user);
       console.log("cart:", items);
     }
   };

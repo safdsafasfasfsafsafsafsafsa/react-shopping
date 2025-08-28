@@ -5,6 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProductById } from "../../store/asyncTrunks/productsTrunks";
 import { useAuthCheck } from "../../hooks/useAuthCheck";
+import { addToCart } from "../../store/asyncTrunks/cartsTrunks";
 
 import "../../styles/Reset.css";
 import "../../styles/DetailPage.css";
@@ -16,10 +17,27 @@ export default function DetailPage() {
   const { checkAuthAndRedirect } = useAuthCheck();
 
   const { itemById, status } = useSelector((state) => state.id);
+  const { items } = useSelector((state) => state.cart);
 
   const handleClick = () => {
     if (checkAuthAndRedirect()) {
       navigate(`/cart`);
+    }
+  };
+
+  const handleAddToCart = () => {
+    if (checkAuthAndRedirect()) {
+      const cartItem = {
+        id: itemById.id,
+        category: itemById.category,
+        image: itemById.image,
+        title: itemById.title,
+        price: itemById.price,
+        // 초기 수량은 trunk 계산으로
+      };
+      dispatch(addToCart(cartItem));
+      alert("장바구니에 상품을 추가했습니다");
+      console.log("cart:", items);
     }
   };
 
@@ -48,7 +66,9 @@ export default function DetailPage() {
           <h2 className="detail__price">$ {itemById.price}</h2>
           <p className="detail__description">{itemById.description}</p>
           <div className="detail-button">
-            <button className="detail__btn insert">장바구니에 담기</button>
+            <button className="detail__btn insert" onClick={handleAddToCart}>
+              장바구니에 담기
+            </button>
             <button className="detail__btn redirect" onClick={handleClick}>
               장바구니로 이동
             </button>

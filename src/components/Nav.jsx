@@ -9,12 +9,13 @@ import { useAuthCheck } from "../hooks/useAuthCheck";
 
 export default function Nav() {
   const navigate = useNavigate();
-
   const dispatch = useDispatch();
-  const { user, status } = useSelector((state) => state.auth);
-
   const { checkAuthAndRedirect } = useAuthCheck();
 
+  const { user, status } = useSelector((state) => state.auth);
+  const { items } = useSelector((state) => state.cart);
+
+  // 일반 리다이렉트
   const handleNav = (nav) => {
     navigate(`/${nav}`);
   };
@@ -34,6 +35,10 @@ export default function Nav() {
     }
   };
 
+  const handleCartTest = () => {
+    console.log("cart", items);
+  };
+
   return (
     <nav className="nav">
       <img
@@ -44,7 +49,9 @@ export default function Nav() {
       />
       <div className="img-right">
         {status === "succeeded" ? (
-          <p className="nav__login-email">{user.email}</p>
+          <p className="nav__login-email" onClick={handleCartTest}>
+            {user.email}
+          </p>
         ) : (
           <></>
         )}

@@ -4,22 +4,53 @@ import React from "react";
 import CartItems from "../../components/CartItems";
 import "../../styles/Reset.css";
 import "../../styles/CartPage.css";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 export default function CartPage() {
+  const navigate = useNavigate();
+
+  const { items, status } = useSelector((state) => state.cart);
+
+  const handleNav = (nav) => {
+    navigate(`/${nav}`);
+  };
+
+  if (status === "loading") {
+    return (
+      <>
+        <section className="cart-page centered">
+          <LoadingSpinner />
+        </section>
+      </>
+    );
+  }
+
+  if (!items) {
+    return (
+      <>
+        <section className="cart-page centered">
+          <img src="/img/cart.png" alt="empty cart" />
+          <h2>장바구니가 비어있습니다.</h2>
+          <a href="/">계속 쇼핑하기</a>
+        </section>
+      </>
+    );
+  }
+
   return (
-    // <section className="cart-page centered">
-    //   <img src="/img/cart.png" alt="empty cart" />
-    //   <h2>장바구니가 비어있습니다.</h2>
-    //   <a href="/">계속 쇼핑하기</a>
-    // </section>
-    <section className="cart-page centered">
-      <h1 className="cart-h1">장바구니</h1>
-      <CartItems />
-      <div className="cart-result">
-        <p className="cart-result__sum">합계: $ 100.00</p>
-        <button className="cart-result__btn">계산하기</button>
-      </div>
-    </section>
+    <>
+      <section className="cart-page centered">
+        <h1 className="cart-h1">장바구니</h1>
+        <CartItems />
+        <div className="cart-result">
+          <p className="cart-result__sum">합계: $ 100.00</p>
+          <button className="cart-result__btn" onClick={() => handleNav("")}>
+            계산하기
+          </button>
+        </div>
+      </section>
+    </>
   );
 }
 

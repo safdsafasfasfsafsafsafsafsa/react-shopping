@@ -1,12 +1,23 @@
 import React from "react";
 import CartItem from "./CartItem";
+import { useSelector } from "react-redux";
 
 export default function CartItems() {
+  const { items } = useSelector((state) => state.cart);
+
   return (
     <div className="cart__items">
-      <CartItem />
-      <CartItem />
-      <CartItem />
+      {items.map((item) => (
+        <CartItem
+          key={item.id}
+          id={item.id}
+          category={item.category}
+          image={item.image}
+          title={item.title}
+          price={item.price}
+          amount={item.amount}
+        />
+      ))}
     </div>
   );
 }

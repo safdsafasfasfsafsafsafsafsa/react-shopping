@@ -1,23 +1,32 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { useNavigate, useParams } from "react-router-dom";
 
-export default function CartItem() {
+export default function CartItem({
+  key,
+  id,
+  category,
+  image,
+  title,
+  price,
+  amount,
+}) {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const params = useParams();
+
+  const newPrice = (price * amount).toFixed(2);
 
   return (
-    <div key="" className="cart__item">
-      <img className="cart__img" src="" alt="cart img" />
+    <div key={key} id={id} className="cart__item">
+      <img className="cart__img" src={image} alt="cart img" />
       <div className="cart-info">
-        <p className="cart__category">category</p>
-        <h2 className="cart__title">AAAAAAAAAAAAAAAAAAAAAA</h2>
-        <h2 className="cart__price">$ 100.00 x 1 = $ 100.00</h2>
+        <p className="cart__category">{category}</p>
+        <h2 className="cart__title">{title}</h2>
+        <h2 className="cart__price">
+          $ {price} x {amount} = $ {newPrice}
+        </h2>
       </div>
       <div className="cart-count">
         <button className="cart-count__minus-btn block">-</button>
-        <p className="cart-count__item block">1</p>
+        <p className="cart-count__item block">{amount}</p>
         <button className="cart-count__plus-btn block">+</button>
       </div>
       <img
