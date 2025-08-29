@@ -16,9 +16,54 @@
 .modal-content {
   position: relative;
   width: 500px;
-  height: 550px;
+  height: auto;
   background-color: white;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* 컴포넌트 */
+.modal__item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0;
+  margin-bottom: 5px;
+  border-bottom: 1px solid var(--text-color-lightgray);
+}
+
+.modal__img {
+  height: 50px;
+  width: auto;
+  padding: 0 30px;
+}
+
+.modal-info {
+  padding-left: 20px;
+  width: 300px;
+  overflow-wrap: break-word;
+}
+
+.modal__category {
+  color: var(--text-color-lightgray);
+}
+
+.modal__title {
+  font-size: 15px;
+}
+
+.modal__icon-delete {
+  width: 20px;
+  margin-left: auto;
+  margin-right: 20px;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.modal-total,
+.modal-redirect {
+  text-align: center;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--text-color-lightgray);
 }
