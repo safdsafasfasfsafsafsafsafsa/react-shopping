@@ -39,10 +39,17 @@
   background-color: rgba(139, 133, 133, 0.205);
 }
 
+.cart-left {
+  display: flex;
+  justify-content: center;
+  height: 100px;
+  width: 300px;
+}
+
 .cart__img {
   height: 100px;
   width: auto;
-  padding: 0 20px;
+  padding: 0 30px;
 }
 
 .cart-info {

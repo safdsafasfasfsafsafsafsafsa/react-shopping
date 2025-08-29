@@ -1,5 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
+import { clearCart } from "../store/asyncTrunks/cartsTrunks";
 
 export default function CartItem({
   key,
@@ -14,9 +15,15 @@ export default function CartItem({
 
   const newPrice = (price * amount).toFixed(2);
 
+  const handleDeleteCart = () => {
+    dispatch(clearCart({ id }));
+  };
+
   return (
     <div key={key} id={id} className="cart__item">
-      <img className="cart__img" src={image} alt="cart img" />
+      <div className="cart-left">
+        <img className="cart__img" src={image} alt="cart img" />
+      </div>
       <div className="cart-info">
         <p className="cart__category">{category}</p>
         <h2 className="cart__title">{title}</h2>
@@ -33,6 +40,7 @@ export default function CartItem({
         className="cart__icon-delete"
         src="/img/trash-can.svg"
         alt="delete"
+        onClick={handleDeleteCart}
       />
     </div>
   );

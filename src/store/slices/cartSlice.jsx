@@ -1,6 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { addToCart } from "../asyncTrunks/cartsTrunks";
-import { useDispatch } from "react-redux";
+import {
+  fetchCart,
+  addToCart,
+  clearCart,
+  clearAllCart,
+} from "../asyncTrunks/cartsTrunks";
 
 const cartSlice = createSlice({
   name: "cart",
@@ -9,8 +13,24 @@ const cartSlice = createSlice({
     status: "idle",
     error: null,
   },
+  // reducers: {
+  //   clearCartLocally: (state) => {
+  //     state.items = [];
+  //   },
+  // },
   extraReducers: (builder) => {
     builder
+      .addCase(fetchCart.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        state.items = action.payload; // ⭐️ 파이어베이스에서 가져온 배열로 로컬 상태를 덮어씀
+      })
+      .addCase(fetchCart.pending, (state) => {
+        state.status = "loading";
+      })
+      .addCase(fetchCart.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.payload;
+      })
       .addCase(addToCart.pending, (state) => {
         state.status = "loading";
       })
@@ -42,8 +62,19 @@ const cartSlice = createSlice({
       .addCase(addToCart.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.error.message;
+      })
+      .addCase(clearCart.fulfilled, (state, action) => {
+        state.status = "succeeded";
+
+        const newItem = action.payload;
+        state.items = state.items.filter((item) => item.id != newItem.id);
+      })
+      .addCase(clearAllCart.fulfilled, (state) => {
+        state.status = "succeeded";
+        state.items = []; // ⭐️ 로컬 상태도 초기화
       });
   },
 });
 
+// export const { clearCartLocally } = cartSlice.actions;
 export default cartSlice.reducer;

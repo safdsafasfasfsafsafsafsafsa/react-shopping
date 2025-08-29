@@ -1,19 +1,23 @@
 import React from "react";
-// import { useDispatch } from "react-redux";
-
-import CartItems from "../../components/CartItems";
-import "../../styles/Reset.css";
 import "../../styles/CartPage.css";
-import { useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import "../../styles/Reset.css";
+import { useDispatch, useSelector } from "react-redux";
+import CartItems from "../../components/CartItems";
+import { clearAllCart } from "../../store/asyncTrunks/cartsTrunks";
 
 export default function CartPage() {
-  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const { items, status } = useSelector((state) => state.cart);
 
-  const handleNav = (nav) => {
-    navigate(`/${nav}`);
+  // 소비 합
+  const totalSpending = items.reduce(
+    (acc, curr) => acc + Number(curr.price * curr.amount),
+    0
+  );
+
+  const handleCartClear = () => {
+    dispatch(clearAllCart());
   };
 
   if (status === "loading") {
@@ -26,7 +30,7 @@ export default function CartPage() {
     );
   }
 
-  if (!items) {
+  if (items.length === 0) {
     return (
       <>
         <section className="cart-page centered">
@@ -44,8 +48,8 @@ export default function CartPage() {
         <h1 className="cart-h1">장바구니</h1>
         <CartItems />
         <div className="cart-result">
-          <p className="cart-result__sum">합계: $ 100.00</p>
-          <button className="cart-result__btn" onClick={() => handleNav("")}>
+          <p className="cart-result__sum">합계: $ {totalSpending.toFixed(2)}</p>
+          <button className="cart-result__btn" onClick={handleCartClear}>
             계산하기
           </button>
         </div>
