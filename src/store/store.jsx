@@ -8,6 +8,7 @@ import mainReducer from "./slices/mainSilce";
 import idReducer from "./slices/idSilce";
 import cartReducer from "./slices/cartSlice";
 import authReducer from "./slices/authSlice";
+import modalReducer from "./slices/modalSlice";
 
 export const store = configureStore({
   reducer: {
@@ -15,5 +16,6 @@ export const store = configureStore({
     id: idReducer,
     cart: cartReducer,
     auth: authReducer,
+    modal: modalReducer,
   },
 });

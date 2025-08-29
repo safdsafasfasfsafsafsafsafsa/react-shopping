@@ -8,7 +8,7 @@
   position: fixed;
   top: 0;
   width: 100%;
-  height: 60px; /* 헤더 높이 */
+  height: var(--nav-height); /* 헤더 높이 */
   z-index: 1000;
   padding: 20px 0;
   border-bottom: 1px solid rgb(25, 25, 25);

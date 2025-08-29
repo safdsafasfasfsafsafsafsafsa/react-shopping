@@ -1,8 +1,11 @@
 import React from "react";
 import "../styles/Reset.css";
 import "./Nav.css";
+import Modal from "./modal";
+
 import { useDispatch, useSelector } from "react-redux";
 import { clearUser } from "../store/slices/authSlice";
+import { openModal, closeModal } from "../store/slices/modalSlice";
 import { logoutUser } from "../store/asyncTrunks/loginTrunks";
 import { useNavigate } from "react-router-dom";
 import { useAuthCheck } from "../hooks/useAuthCheck";
@@ -14,6 +17,7 @@ export default function Nav() {
 
   const { user, status } = useSelector((state) => state.auth);
   const { items } = useSelector((state) => state.cart);
+  const { isOpen } = useSelector((state) => state.modal);
 
   // 일반 리다이렉트
   const handleNav = (nav) => {
@@ -21,13 +25,25 @@ export default function Nav() {
   };
 
   // 로그인 체크
-  const handleNavCheck = (nav) => {
+  // const handleNavCheck = (nav) => {
+  //   const check = checkAuthAndRedirect();
+  //   if (check) {
+  //     navigate(`/${nav}`);
+  //   }
+  // };
+
+  // 모달 체크
+  const handleModalCheck = () => {
     const check = checkAuthAndRedirect();
-    if (check) {
-      navigate(`/${nav}`);
+    if (check && isOpen === false) {
+      dispatch(openModal());
+    }
+    if (check && isOpen === true) {
+      dispatch(closeModal());
     }
   };
 
+  // 로그아웃
   const handleClickLogout = () => {
     if (status === "succeeded") {
       dispatch(logoutUser());
@@ -36,46 +52,51 @@ export default function Nav() {
     }
   };
 
+  // 카트 연결 테스트 코드
   const handleCartTest = () => {
     console.log("cart", items);
   };
 
   return (
-    <nav className="nav">
-      <img
-        src="/img/logo.png"
-        alt="shop logo"
-        className="nav__logo"
-        onClick={() => handleNav("")}
-      />
-      <div className="img-right">
-        {status === "succeeded" ? (
-          <p className="nav__login-email" onClick={handleCartTest}>
-            {user.email}
-          </p>
-        ) : (
-          <></>
-        )}
+    <>
+      <nav className="nav">
         <img
-          src="/img/cart.svg"
-          alt="cart"
-          className="nav__cart"
-          onClick={() => handleNavCheck("cart")}
+          src="/img/logo.png"
+          alt="shop logo"
+          className="nav__logo"
+          onClick={() => handleNav("")}
         />
-        <img
-          src="/img/person.svg"
-          alt="person"
-          className="nav__person"
-          onClick={() => handleNav("login")}
-        />
-        <img
-          src="/img/login.svg"
-          alt="login"
-          className="nav__log-in-out"
-          onClick={handleClickLogout}
-        />
-      </div>
-    </nav>
+        <div className="img-right">
+          {status === "succeeded" ? (
+            <p className="nav__login-email" onClick={handleCartTest}>
+              {user.email}
+            </p>
+          ) : (
+            <></>
+          )}
+          <img
+            src="/img/cart.svg"
+            alt="cart"
+            className="nav__cart"
+            // onClick={() => handleNavCheck("cart")}
+            onClick={handleModalCheck}
+          />
+          <img
+            src="/img/person.svg"
+            alt="person"
+            className="nav__person"
+            onClick={() => handleNav("login")}
+          />
+          <img
+            src="/img/login.svg"
+            alt="login"
+            className="nav__log-in-out"
+            onClick={handleClickLogout}
+          />
+        </div>
+      </nav>
+      {isOpen && <Modal />}
+    </>
   );
 }
 
