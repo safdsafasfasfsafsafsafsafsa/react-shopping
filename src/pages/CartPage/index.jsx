@@ -4,6 +4,7 @@ import "../../styles/Reset.css";
 import { useDispatch, useSelector } from "react-redux";
 import CartItems from "../../components/CartItems";
 import { clearAllCart } from "../../store/asyncTrunks/cartsTrunks";
+import LoadingSpinner from "../../components/LoadingSpinner";
 
 export default function CartPage() {
   const dispatch = useDispatch();
@@ -25,6 +26,16 @@ export default function CartPage() {
       <>
         <section className="cart-page centered">
           <LoadingSpinner />
+        </section>
+      </>
+    );
+  }
+
+  if (status === "failed") {
+    return (
+      <>
+        <section className="cart-page centered">
+          <p>호출 실패</p>
         </section>
       </>
     );

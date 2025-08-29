@@ -7,17 +7,24 @@ export default function CartItems() {
 
   return (
     <div className="cart__items">
-      {items.map((item) => (
-        <CartItem
-          key={item.id}
-          id={item.id}
-          category={item.category}
-          image={item.image}
-          title={item.title}
-          price={item.price}
-          amount={item.amount}
-        />
-      ))}
+      {Array.isArray(items) && items.length > 0 ? (
+        items.map(
+          (item) =>
+            items && (
+              <CartItem
+                key={item.id}
+                id={item.id}
+                category={item.category}
+                image={item.image}
+                title={item.title}
+                price={item.price}
+                amount={item.amount}
+              />
+            )
+        )
+      ) : (
+        <p>테스트</p>
+      )}
     </div>
   );
 }

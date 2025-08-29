@@ -27,6 +27,8 @@ const Layout = () => {
 export default function App() {
   const dispatch = useDispatch();
   const { user, isAuthReady } = useSelector((state) => state.auth);
+  const { status } = useSelector((state) => state.cart);
+
   const timeoutRef = useRef(null);
   const logoutTimeout = 1000 * 60 * 30; // 30분
 
@@ -98,7 +100,7 @@ export default function App() {
     return () => unsubscribe();
   }, [dispatch]);
 
-  if (!isAuthReady) {
+  if (!isAuthReady && status === "loading") {
     return <div>로딩 중...</div>;
   }
 

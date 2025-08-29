@@ -16,7 +16,7 @@ export default function CartItem({
   const newPrice = (price * amount).toFixed(2);
 
   const handleDeleteCart = () => {
-    dispatch(clearCart({ id }));
+    dispatch(clearCart(id));
   };
 
   return (

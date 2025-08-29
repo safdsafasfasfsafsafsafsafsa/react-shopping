@@ -20,17 +20,19 @@ const cartSlice = createSlice({
   // },
   extraReducers: (builder) => {
     builder
+      // fetch
+      .addCase(fetchCart.pending, (state) => {
+        state.status = "loading";
+      })
       .addCase(fetchCart.fulfilled, (state, action) => {
         state.status = "succeeded";
         state.items = action.payload; // ⭐️ 파이어베이스에서 가져온 배열로 로컬 상태를 덮어씀
-      })
-      .addCase(fetchCart.pending, (state) => {
-        state.status = "loading";
       })
       .addCase(fetchCart.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.payload;
       })
+      // 추가
       .addCase(addToCart.pending, (state) => {
         state.status = "loading";
       })
@@ -63,15 +65,31 @@ const cartSlice = createSlice({
         state.status = "failed";
         state.error = action.error.message;
       })
+      // 삭제
+      .addCase(clearCart.pending, (state) => {
+        state.status = "loading";
+      })
       .addCase(clearCart.fulfilled, (state, action) => {
         state.status = "succeeded";
 
-        const newItem = action.payload;
-        state.items = state.items.filter((item) => item.id != newItem.id);
+        const removeItem = action.payload;
+        state.items = state.items.filter((item) => item.id != removeItem.id);
+      })
+      .addCase(clearCart.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.error.message;
+      })
+      // 전체 삭제
+      .addCase(clearAllCart.pending, (state) => {
+        state.status = "loading";
       })
       .addCase(clearAllCart.fulfilled, (state) => {
         state.status = "succeeded";
         state.items = []; // ⭐️ 로컬 상태도 초기화
+      })
+      .addCase(clearAllCart.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.error.message;
       });
   },
 });

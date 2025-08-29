@@ -32,6 +32,7 @@ export default function Nav() {
     if (status === "succeeded") {
       dispatch(logoutUser());
       dispatch(clearUser());
+      window.location.href = "/"; // 새로고침
     }
   };
 

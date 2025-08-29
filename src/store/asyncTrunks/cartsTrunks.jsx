@@ -69,23 +69,19 @@ export const addToCart = createAsyncThunk(
 
 export const clearCart = createAsyncThunk(
   "cart/clearCart",
-  async (item, thunkAPI) => {
+  async (itemId, thunkAPI) => {
     try {
       const userId = auth.currentUser.uid;
-      const itemId = item.id.toString();
-      const itemRef = collection(db, "users", userId, "cart", itemId);
 
-      const itemSnap = await getDocs(itemRef);
-      await deleteDoc(doc(db, "users", userId, "cart", itemSnap.docs.id));
+      // ⭐️ 1. doc()을 사용하여 삭제할 문서에 대한 참조를 만듭니다.
+      const itemRef = doc(db, "users", userId, "cart", itemId);
 
-      const updatedItemSnap = await getDoc(itemRef);
+      // ⭐️ 2. deleteDoc()을 사용하여 문서를 삭제합니다.
+      await deleteDoc(itemRef);
 
-      if (updatedItemSnap.exists()) {
-        console.log("Firestore 항목 삭제");
-        return { id: updatedItemSnap.id };
-      } else {
-        return thunkAPI.rejectWithValue("삭제 실패");
-      }
+      // ⭐️ 3. 성공적으로 삭제된 문서의 ID를 반환합니다.
+      console.log("Firestore 항목 삭제 성공:", itemId);
+      return itemId;
     } catch (error) {
       console.error("Firestore 항목 삭제 실패:", error);
       return thunkAPI.rejectWithValue(error.message);
