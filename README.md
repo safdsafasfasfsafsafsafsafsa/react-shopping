@@ -1,12 +1,23 @@
-# React + Vite
+# React-Shopping
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![](test-shop.webp)
 
-Currently, two official plugins are available:
+redux-toolkit + firebase
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 기능
 
-## Expanding the ESLint configuration
+- Nav: 로그인/로그아웃 기능과 계정 출력, 카트 모달
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- 메인: api 취득해 상품 출력
+
+- 로그인/가입: firebase에 계정 등록
+
+- 카트: 계정 별 DB 분리, 합계 출력
+
+## 미해결 문제
+
+1. 첫 화면에서 바로 상품 화면 출력
+
+2. 카트에서 항목 삭제 시 즉시 연동되지 않는 문제
+
+3. 카트에서 카운트로 수량 변동

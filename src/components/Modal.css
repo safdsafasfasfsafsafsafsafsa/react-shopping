@@ -67,3 +67,7 @@
   padding: 10px 0;
   border-bottom: 1px solid var(--text-color-lightgray);
 }
+
+.modal-redirect p {
+  cursor: pointer;
+}

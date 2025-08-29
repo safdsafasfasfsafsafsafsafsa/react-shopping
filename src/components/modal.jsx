@@ -1,13 +1,12 @@
 import React from "react";
 import "./modal.css";
 import CartItemToModal from "./CartItemToModal";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { useAuthCheck } from "../hooks/useAuthCheck";
 import { useNavigate } from "react-router-dom";
 
 export default function Modal() {
   const { checkAuthAndRedirect } = useAuthCheck();
-  const dispatch = useDispatch();
   const navigate = useNavigate();
   const { items } = useSelector((state) => state.cart);
 
